@@ -1,0 +1,49 @@
+.backgroundBuatan {
+    background-color: aqua;
+}
+
+.bgAuthLeft {
+    background: url(../assets/women-books-banner-loginpage.png);
+    background-repeat: no-repeat;
+}
+
+.inputRegister {
+    border: 1px solid rgba(55, 106, 237, 0.49);
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+.inputRegister:focus, .inputRegisterMobile:focus {
+    outline: 0 none;
+}
+
+.btnRegister {
+    background: #376AED;
+    box-shadow: 0px 6px 20px rgba(55, 106, 237, 0.41);
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.iconEyecrossed {
+    margin-right: 15px;
+    margin-top: -60px;
+    cursor: pointer;
+  }
+
+.hrBlue {
+    color: #9DB6F6;
+    border: 2px solid #9DB6F6;
+}
+
+.btnLogin {
+    background: #0D253C;
+    box-shadow: 0px 6px 20px rgba(13, 37, 60, 0.4);
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.formWrapperMobile {
+    background: #FFFFFF;
+    box-shadow: 0px -20px 32px rgba(82, 130, 255, 0.09);
+    border-top-right-radius: 20px;
+    border-top-left-radius: 20px;
+}
