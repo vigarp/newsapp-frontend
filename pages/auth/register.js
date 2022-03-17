@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
 import styles from '../../styles/Register.module.css'
@@ -55,7 +56,10 @@ const Register = () => {
             console.log(formRegister)
         }
     }
-    return (
+    return (<>
+        <Head>
+            <title>Register - NewsApp</title>
+        </Head>
         <div className={`bg-white`}>
             <div className={`d-none d-lg-flex`}>
                 <div className={`w-50 ${styles.bgAuthLeft}`}></div>
@@ -95,7 +99,7 @@ const Register = () => {
                         <div className={`text-primary px-3 py-1`}>Already have an account?</div>
                         <hr className={`w-25 ${styles.hrBlue}`} />
                     </div>
-                    <div className={`py-3 px-5 w-75 text-white fw-bold text-center ${styles.btnLogin}`} onClick={()=> router.push("/auth/login")}>Login Here</div>
+                    <div className={`py-3 px-5 w-75 text-white fw-bold text-center ${styles.btnLogin}`} onClick={() => router.push("/auth/login")}>Login Here</div>
                     <div className={`text-decoration-underline text-center w-75 my-5`}><Link href="/main/home">Back to Home Page</Link></div>
                 </div>
             </div>
@@ -140,13 +144,13 @@ const Register = () => {
                             onChange={handleChange}
                             value={formRegister.phonenumber}
                             className={`py-3 bg-transparent w-100 mb-4 border-0 border-bottom ${styles.inputRegisterMobile}`} />
-                            <div className={`text-primary text-center mt-5`}>{formRegisterError.email || formRegisterError.password || formRegisterError.phonenumber}</div>
+                        <div className={`text-primary text-center mt-5`}>{formRegisterError.email || formRegisterError.password || formRegisterError.phonenumber}</div>
                         <div onClick={handleSubmit} className={`py-3 px-5 my-5 w-100 text-white fw-bold text-center ${styles.btnRegister}`}>Sign Up</div>
                     </div>
                 </div>
             </div>
         </div>
-    );
+    </>);
 }
 
 export default Register;

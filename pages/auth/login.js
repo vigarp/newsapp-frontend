@@ -1,3 +1,4 @@
+import Head from 'next/head'
 import Link from 'next/link'
 import Image from 'next/image'
 import styles from '../../styles/Login.module.css'
@@ -50,7 +51,10 @@ const Login = () => {
         }
     }
 
-    return (
+    return (<>
+        <Head>
+            <title>Login - NewsApp</title>
+        </Head>
         <div className={`bg-white`}>
             <div className={`d-none d-lg-flex`}>
                 <div className={`w-50 ${styles.bgAuthLeft}`}></div>
@@ -125,7 +129,7 @@ const Login = () => {
                 </div>
             </div>
         </div>
-    );
+    </>);
 }
 
 export default Login;
