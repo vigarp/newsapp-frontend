@@ -1,0 +1,31 @@
+.boxCoverPhoto {
+    border: 1px solid rgba(55, 106, 237, 0.3);
+    box-sizing: border-box;
+    border-radius: 16px;
+}
+
+.innerBorderPhoto {
+    border: 1px dashed rgba(55, 106, 237, 0.3);
+    box-sizing: border-box;
+    border-radius: 16px;
+}
+
+.formArticle {
+    border: 1px solid rgba(55, 106, 237, 0.3);
+    box-sizing: border-box;
+    border-radius: 16px;
+}
+.formArticle:focus {
+    outline: none;
+}
+
+.btnChoosePhoto {
+    background: #0D253C;
+    border-radius: 16px;
+}
+
+.btnRequestPublish {
+    background: #376AED;
+    box-shadow: 0px 0px 20px rgba(55, 106, 237, 0.6);
+    border-radius: 16px;
+}
