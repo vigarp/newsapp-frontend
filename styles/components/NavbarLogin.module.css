@@ -1,0 +1,15 @@
+.btnLogin {
+    background: #376AED;
+    border: 1px solid #376AED;
+    box-sizing: border-box;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.authBtns{
+    margin: 0px 100px;
+}
+
+.divider {
+    margin: 0rem 0;
+}

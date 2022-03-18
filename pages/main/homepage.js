@@ -1,5 +1,5 @@
 import Head from "next/head"
-import Navbar from "../../components/Navbar"
+import NavbarLogin from "../../components/NavbarLogin"
 import Footer from "../../components/Footer"
 import styles from "../../styles/Homepage.module.css"
 import Image from "next/image"
@@ -9,7 +9,7 @@ const HomePage = () => {
         <Head>
             <title>Homepage - NewsApp</title>
         </Head>
-        <Navbar />
+        <NavbarLogin />
         <div className={`${styles.landingFirst}`}>
             <div className={`${styles.innerContent}`}>
                 <div className={`${styles.bannerHomepage}`}>Share Information<br /> and Educate People</div>
