@@ -1,0 +1,83 @@
+.landingFirst {
+    background: url(../assets/man-newspaper-banner-homepage.svg) no-repeat;
+    background-image: linear-gradient(
+        112.58deg, 
+        #FFFFFF 18.15%,
+        rgba(255, 255, 255, 0) 53.07%), 
+        rgba(0, 0, 0, 0.1);
+    background-size: cover;
+    height: 1000px;
+}
+
+.innerContent {
+    padding: 100px 100px
+}
+
+.bannerHomepage {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 700 Bold;
+    font-style: normal;
+    font-size: 65px;
+    line-height: 73.85px;
+}
+
+.subtitleHomepage {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 31px;
+}
+
+.btnStartExploring {
+    background: #376AED;
+    border: 1px solid #376AED;
+    box-sizing: border-box;
+    border-radius: 4px;
+    font-family: 'Lato';
+    width: 170px;
+    height: 50px;
+    padding: 10px 20px;
+}
+
+.tagBox {
+    background: rgba(82, 130, 255, 0.09);
+    border-radius: 5px;
+}
+
+.recomendedBox {
+    background: #FFFFFF;
+    box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.2);
+    border-radius: 16px;
+    width: 400px;
+}
+
+.landingThird {
+    background: #D7DDEC;
+}
+
+.bannerHomepageSecond {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-weight: 700 Bold;
+    font-style: normal;
+    font-size: 36px;
+    line-height: 56.52px;
+}
+
+.subtitleHomepageSecond {
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 25px;
+    line-height: 157%;
+}
+
+.btnLetsStarted {
+    background: #376AED;
+    border: 1px solid #D9DFEB;
+    box-sizing: border-box;
+    border-radius: 4px;
+    width: 180px;
+    height: 50px;
+    padding: 10px 20px;
+}

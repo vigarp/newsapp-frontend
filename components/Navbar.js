@@ -6,7 +6,7 @@ import styles from '../styles/components/Navbar.module.css'
 const Navbar = () => {
     const router = useRouter()
     return (
-        <nav className={`h-20 mb-5 bg-white`}>
+        <nav className={`h-20 bg-white`}>
             <div className={`d-flex mx-5 mt-3 mb-4`}>
                 <Image className={`pt-3`} src={require("../assets/icons/news-today-banner-loginpage.svg").default} alt="" />
                 <div className={`d-flex mx-5 pt-3`}>
@@ -20,7 +20,7 @@ const Navbar = () => {
                     <div className={`text-white px-3 py-1 ms-3 text-decoration-none ${styles.btnLogin}`} onClick={()=>router.push("/auth/login")}>Login</div>
                 </div>
             </div>
-            <hr/>
+            <hr className={`${styles.divider}`}/>
         </nav>
     );
 }
