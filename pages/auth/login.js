@@ -5,6 +5,7 @@ import styles from '../../styles/Login.module.css'
 import Footer from '../../components/Footer'
 import { useState } from 'react/cjs/react.development'
 import { useRouter } from 'next/router'
+import axios from 'axios'
 
 const Login = () => {
     const router = useRouter()
@@ -14,6 +15,7 @@ const Login = () => {
     })
 
     const [formLoginError, setFormLoginError] = useState(false)
+    const [loading, setLoading] = useState(false)
 
     const handleChange = (e) => {
         setFormLogin({
@@ -47,7 +49,27 @@ const Login = () => {
     const handleClick = (resultValidate) => {
         if (Object.keys(resultValidate).length === 0) {
             setFormLoginError(false)
-            console.log(formLogin)
+            setLoading(true)
+            axios.post(`${process.env.NEXT_PUBLIC_APP_URL_BACKEND}/login`,
+                {
+                    email: formLogin.email,
+                    password: formLogin.password
+                })
+                .then((res) => {
+                    const tokenUser = res.data.data.token
+                    localStorage.setItem('token', tokenUser)
+                    setLoading(false)
+                    router.push("/main/homepage")
+                })
+                .catch((err) => {
+                    setLoading(false)
+                    console.log(err)
+                    if (err.response.status === 403) {
+                        alert(err.response.data.message)
+                    } else {
+                        alert('Internal Server Error')
+                    }
+                })
         }
     }
 
@@ -79,7 +101,7 @@ const Login = () => {
                             className={`py-3 px-3 bg-transparent w-75 ${styles.inputLogin}`} />
                     </div>
                     <div className={`text-primary text-center w-75 my-5`}>{formLoginError.email || formLoginError.password}</div>
-                    <div onClick={handleSubmit} className={`py-3 px-5 w-75 text-white fw-bold text-center ${styles.btnLogin}`}>Login</div>
+                    <div onClick={handleSubmit} className={`py-3 px-5 w-75 text-white fw-bold text-center ${styles.btnLogin}`}>{loading ? 'Loading...' : 'Login'}</div>
                     <div className={`d-flex my-5`}>
                         <hr className={`w-25 ${styles.hrBlue}`} />
                         <div className={`text-primary px-3 py-1`}>Don&apos;t have an account?</div>
