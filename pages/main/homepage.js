@@ -4,7 +4,16 @@ import Footer from "../../components/Footer"
 import styles from "../../styles/Homepage.module.css"
 import Image from "next/image"
 
-const HomePage = () => {
+export async function getServerSideProps() {
+    // Fetch data from external API
+    const res = await fetch(`${process.env.NEXT_PUBLIC_APP_URL_BACKEND}/articles`)
+    const data = await res.json()
+
+    // Pass data to the page via props
+    return { props: { data } }
+}
+
+const HomePage = ({data}) => {
     return (<>
         <Head>
             <title>Homepage - NewsApp</title>
@@ -163,11 +172,12 @@ const HomePage = () => {
         <div className={`mx-5 mt-5 landingFourth`}>
             <div className={`fw-bold`}>Latest News</div>
             <div className={`row mt-1 justify-content-center`}>
-                <div className={`col-4 d-flex m-3 ${styles.recomendedBox}`}>
+                {data.data?.map((item, index) => (
+                <div className={`col-4 d-flex m-3 ${styles.recomendedBox}`} key={index}>
                     <Image src={require("../../assets/health-cat-homepage.png")} width={130} height={205} alt="" />
                     <div className={`desc m-3`}>
-                        <div className={`fw-bold text-primary`}>COVID-19</div>
-                        <div>Why corona never ends? Let&apos;s see how its facts</div>
+                        <div className={`fw-bold text-primary`}>{item.title}</div>
+                        <div>{item.header}</div>
                         <div className={`d-flex justify-content-around mt-5`}>
                             <div className={`d-flex`}>
                                 <Image src={require("../../assets/icons/likes-homepage.svg").default} alt="" />
@@ -183,166 +193,12 @@ const HomePage = () => {
                         </div>
                     </div>
                 </div>
-                <div className={`col-4 d-flex m-3 ${styles.recomendedBox}`}>
-                    <Image src={require("../../assets/health-cat-homepage.png")} width={130} height={205} alt="" />
-                    <div className={`desc m-3`}>
-                        <div className={`fw-bold text-primary`}>COVID-19</div>
-                        <div>Why corona never ends? Let&apos;s see how its facts</div>
-                        <div className={`d-flex justify-content-around mt-5`}>
-                            <div className={`d-flex`}>
-                                <Image src={require("../../assets/icons/likes-homepage.svg").default} alt="" />
-                                <div className={`text-muted ms-1`}>2.1 K</div>
-                            </div>
-                            <div className={`d-flex`}>
-                                <Image src={require("../../assets/icons/clock-homepage.svg").default} alt="" />
-                                <div className={`text-muted ms-1`}>3m ago</div>
-                            </div>
-                            <div className={`saved`}>
-                                <Image src={require("../../assets/icons/saved-homepage.svg").default} alt="" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className={`col-4 d-flex m-3 ${styles.recomendedBox}`}>
-                    <Image src={require("../../assets/health-cat-homepage.png")} width={130} height={205} alt="" />
-                    <div className={`desc m-3`}>
-                        <div className={`fw-bold text-primary`}>COVID-19</div>
-                        <div>Why corona never ends? Let&apos;s see how its facts</div>
-                        <div className={`d-flex justify-content-around mt-5`}>
-                            <div className={`d-flex`}>
-                                <Image src={require("../../assets/icons/likes-homepage.svg").default} alt="" />
-                                <div className={`text-muted ms-1`}>2.1 K</div>
-                            </div>
-                            <div className={`d-flex`}>
-                                <Image src={require("../../assets/icons/clock-homepage.svg").default} alt="" />
-                                <div className={`text-muted ms-1`}>3m ago</div>
-                            </div>
-                            <div className={`saved`}>
-                                <Image src={require("../../assets/icons/saved-homepage.svg").default} alt="" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className={`col-4 d-flex m-3 ${styles.recomendedBox}`}>
-                    <Image src={require("../../assets/health-cat-homepage.png")} width={130} height={205} alt="" />
-                    <div className={`desc m-3`}>
-                        <div className={`fw-bold text-primary`}>COVID-19</div>
-                        <div>Why corona never ends? Let&apos;s see how its facts</div>
-                        <div className={`d-flex justify-content-around mt-5`}>
-                            <div className={`d-flex`}>
-                                <Image src={require("../../assets/icons/likes-homepage.svg").default} alt="" />
-                                <div className={`text-muted ms-1`}>2.1 K</div>
-                            </div>
-                            <div className={`d-flex`}>
-                                <Image src={require("../../assets/icons/clock-homepage.svg").default} alt="" />
-                                <div className={`text-muted ms-1`}>3m ago</div>
-                            </div>
-                            <div className={`saved`}>
-                                <Image src={require("../../assets/icons/saved-homepage.svg").default} alt="" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className={`col-4 d-flex m-3 ${styles.recomendedBox}`}>
-                    <Image src={require("../../assets/health-cat-homepage.png")} width={130} height={205} alt="" />
-                    <div className={`desc m-3`}>
-                        <div className={`fw-bold text-primary`}>COVID-19</div>
-                        <div>Why corona never ends? Let&apos;s see how its facts</div>
-                        <div className={`d-flex justify-content-around mt-5`}>
-                            <div className={`d-flex`}>
-                                <Image src={require("../../assets/icons/likes-homepage.svg").default} alt="" />
-                                <div className={`text-muted ms-1`}>2.1 K</div>
-                            </div>
-                            <div className={`d-flex`}>
-                                <Image src={require("../../assets/icons/clock-homepage.svg").default} alt="" />
-                                <div className={`text-muted ms-1`}>3m ago</div>
-                            </div>
-                            <div className={`saved`}>
-                                <Image src={require("../../assets/icons/saved-homepage.svg").default} alt="" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className={`col-4 d-flex m-3 ${styles.recomendedBox}`}>
-                    <Image src={require("../../assets/health-cat-homepage.png")} width={130} height={205} alt="" />
-                    <div className={`desc m-3`}>
-                        <div className={`fw-bold text-primary`}>COVID-19</div>
-                        <div>Why corona never ends? Let&apos;s see how its facts</div>
-                        <div className={`d-flex justify-content-around mt-5`}>
-                            <div className={`d-flex`}>
-                                <Image src={require("../../assets/icons/likes-homepage.svg").default} alt="" />
-                                <div className={`text-muted ms-1`}>2.1 K</div>
-                            </div>
-                            <div className={`d-flex`}>
-                                <Image src={require("../../assets/icons/clock-homepage.svg").default} alt="" />
-                                <div className={`text-muted ms-1`}>3m ago</div>
-                            </div>
-                            <div className={`saved`}>
-                                <Image src={require("../../assets/icons/saved-homepage.svg").default} alt="" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className={`col-4 d-flex m-3 ${styles.recomendedBox}`}>
-                    <Image src={require("../../assets/health-cat-homepage.png")} width={130} height={205} alt="" />
-                    <div className={`desc m-3`}>
-                        <div className={`fw-bold text-primary`}>COVID-19</div>
-                        <div>Why corona never ends? Let&apos;s see how its facts</div>
-                        <div className={`d-flex justify-content-around mt-5`}>
-                            <div className={`d-flex`}>
-                                <Image src={require("../../assets/icons/likes-homepage.svg").default} alt="" />
-                                <div className={`text-muted ms-1`}>2.1 K</div>
-                            </div>
-                            <div className={`d-flex`}>
-                                <Image src={require("../../assets/icons/clock-homepage.svg").default} alt="" />
-                                <div className={`text-muted ms-1`}>3m ago</div>
-                            </div>
-                            <div className={`saved`}>
-                                <Image src={require("../../assets/icons/saved-homepage.svg").default} alt="" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className={`col-4 d-flex m-3 ${styles.recomendedBox}`}>
-                    <Image src={require("../../assets/health-cat-homepage.png")} width={130} height={205} alt="" />
-                    <div className={`desc m-3`}>
-                        <div className={`fw-bold text-primary`}>COVID-19</div>
-                        <div>Why corona never ends? Let&apos;s see how its facts</div>
-                        <div className={`d-flex justify-content-around mt-5`}>
-                            <div className={`d-flex`}>
-                                <Image src={require("../../assets/icons/likes-homepage.svg").default} alt="" />
-                                <div className={`text-muted ms-1`}>2.1 K</div>
-                            </div>
-                            <div className={`d-flex`}>
-                                <Image src={require("../../assets/icons/clock-homepage.svg").default} alt="" />
-                                <div className={`text-muted ms-1`}>3m ago</div>
-                            </div>
-                            <div className={`saved`}>
-                                <Image src={require("../../assets/icons/saved-homepage.svg").default} alt="" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className={`col-4 d-flex m-3 ${styles.recomendedBox}`}>
-                    <Image src={require("../../assets/health-cat-homepage.png")} width={130} height={205} alt="" />
-                    <div className={`desc m-3`}>
-                        <div className={`fw-bold text-primary`}>COVID-19</div>
-                        <div>Why corona never ends? Let&apos;s see how its facts</div>
-                        <div className={`d-flex justify-content-around mt-5`}>
-                            <div className={`d-flex`}>
-                                <Image src={require("../../assets/icons/likes-homepage.svg").default} alt="" />
-                                <div className={`text-muted ms-1`}>2.1 K</div>
-                            </div>
-                            <div className={`d-flex`}>
-                                <Image src={require("../../assets/icons/clock-homepage.svg").default} alt="" />
-                                <div className={`text-muted ms-1`}>3m ago</div>
-                            </div>
-                            <div className={`saved`}>
-                                <Image src={require("../../assets/icons/saved-homepage.svg").default} alt="" />
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                ))}
+
+
+
+
+
                 <div className={`text-muted text-center my-5`}>No Article Left</div>
             </div>
         </div>
