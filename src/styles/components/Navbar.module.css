@@ -1,3 +1,7 @@
+.navbarLinks {
+    margin: 0px 120px;
+}
+
 .btnLogin {
     background: #376AED;
     border: 1px solid #376AED;
@@ -7,9 +11,13 @@
 }
 
 .authBtns{
-    margin: 0px 100px;
+    margin: 0px 175px;
 }
 
 .divider {
     margin: 0rem 0;
+}
+
+.userPointer {
+    cursor: pointer;
 }

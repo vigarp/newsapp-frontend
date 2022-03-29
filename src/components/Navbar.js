@@ -6,21 +6,21 @@ import styles from '../styles/components/Navbar.module.css'
 const Navbar = () => {
     const router = useRouter()
     return (
-        <nav className={`h-20 bg-white`}>
-            <div className={`d-flex mx-5 mt-3 mb-4`}>
-                <Image className={`pt-3`} src={require("../assets/icons/news-today-banner-loginpage.svg").default} alt="" />
-                <div className={`d-flex mx-5 pt-3`}>
-                    <div className={`mx-5 fw-bold`}>Home</div>
-                    <div className={`mx-5 text-muted`}>Articles</div>
-                    <div className={`mx-5 text-muted`}>Category</div>
-                    <div className={`mx-5 text-muted`}>About</div>
+        <nav>
+            <div className={`d-flex justify-content-between mx-5 pt-3 pb-5`}>
+                <Image src={require("../assets/icons/news-today-banner-loginpage.svg").default} alt="" />
+                <div className={`d-flex pt-3 ${styles.navbarLinks}`}>
+                    <div className={`mx-5`}><Link href={"/main/homepage"}>Home</Link></div>
+                    <div className={`mx-5`}><Link href={"/main/articles"}>Articles</Link></div>
+                    <div className={`mx-5`}><Link href={"/main/category"}>Category</Link></div>
+                    <div className={`mx-5`}><Link href={"/main/about"}>About</Link></div>
                 </div>
-                <div className={`d-flex pt-2 ${styles.authBtns}`}>
-                    <div className={`ms-5 me-3 py-1 text-decoration-none`}><Link href={"/auth/register"}>Sign up</Link></div>
+                <div className={`d-flex pt-1`}>
+                    <div className={`px-3 py-2 text-decoration-none`}><Link href={"/auth/register"}>Sign up</Link></div>
                     <div className={`text-white px-3 py-1 ms-3 text-decoration-none ${styles.btnLogin}`} onClick={()=>router.push("/auth/login")}>Login</div>
                 </div>
             </div>
-            <hr className={`${styles.divider}`}/>
+            <hr className={`${styles.divider}`} />
         </nav>
     );
 }
