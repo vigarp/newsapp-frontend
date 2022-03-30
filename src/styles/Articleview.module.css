@@ -1,4 +1,9 @@
+.btnLike, .btnSave {
+    cursor: pointer;
+}
+
 .btnShareArticle {
     background: #0D253C;
     border-radius: 15px;
+    cursor: pointer;
 }
