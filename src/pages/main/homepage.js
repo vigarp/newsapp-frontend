@@ -1,15 +1,24 @@
 import Head from "next/head"
 import Navbar from "../../components/Navbar"
+import NavbarLogin from "../../components/NavbarLogin"
 import Footer from "../../components/Footer"
 import styles from "../../styles/Homepage.module.css"
 import Image from "next/image"
 
 const homepage = () => {
+    function authCheck () {
+        if (typeof window !== "undefined" && localStorage.getItem('token') !== null) {
+            return {isLoggedIn: true}
+        } else {
+            return {isLoggedIn: false}
+        }
+    }
+    const {isLoggedIn} = authCheck()
     return (<>
         <Head>
             <title>Homepage - NewsApp</title>
         </Head>
-        <Navbar />
+        {isLoggedIn ? (<NavbarLogin />) : (<Navbar />)}
         <div className={`${styles.landingFirst}`}>
             <div className={`px-5 py-5 banner-inner`}>
                 <div className={`${styles.bannerHomepage}`}>Share Information<br /> and Educate People</div>
