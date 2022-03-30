@@ -11,9 +11,9 @@ const Navbar = () => {
                 <Image src={require("../assets/icons/news-today-banner-loginpage.svg").default} alt="" />
                 <div className={`d-flex pt-3 ${styles.navbarLinks}`}>
                     <div className={`mx-5`}><Link href={"/main/homepage"}>Home</Link></div>
-                    <div className={`mx-5`}><Link href={"/main/articles"}>Articles</Link></div>
-                    <div className={`mx-5`}><Link href={"/main/category"}>Category</Link></div>
-                    <div className={`mx-5`}><Link href={"/main/about"}>About</Link></div>
+                    <div className={`mx-5`}><Link href={"/main/writearticle"}>Articles</Link></div>
+                    <div className={`mx-5`}><Link href={"#"}>Category</Link></div>
+                    <div className={`mx-5`}><Link href={"#"}>About</Link></div>
                 </div>
                 <div className={`d-flex pt-1`}>
                     <div className={`px-3 py-2 text-decoration-none`}><Link href={"/auth/register"}>Sign up</Link></div>
