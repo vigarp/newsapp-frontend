@@ -4,7 +4,7 @@ import Image from 'next/image'
 import styles from '../../styles/Register.module.css'
 import Footer from '../../components/Footer'
 import { useRouter } from 'next/router'
-import { useState } from 'react/cjs/react.development'
+import { useState } from 'react'
 
 const Register = () => {
     const router = useRouter()

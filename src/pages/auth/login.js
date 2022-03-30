@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import styles from '../../styles/Login.module.css'
 import Footer from '../../components/Footer'
-import { useState } from 'react/cjs/react.development'
+import { useState } from 'react'
 import { useRouter } from 'next/router'
 import axios from 'axios'
 
