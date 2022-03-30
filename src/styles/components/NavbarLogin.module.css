@@ -1,13 +1,13 @@
-.btnLogin {
-    background: #376AED;
+.borderSearch {
+    opacity: 0.3;
     border: 1px solid #376AED;
     box-sizing: border-box;
-    border-radius: 4px;
-    cursor: pointer;
+    border-radius: 10px;
 }
 
-.authBtns{
-    margin: 0px 100px;
+.searchBox {
+    outline: 0;
+    border: 0;
 }
 
 .divider {

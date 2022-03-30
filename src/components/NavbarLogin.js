@@ -1,18 +1,25 @@
 import Image from "next/image"
-import { useRouter } from "next/router"
-import styles from '../styles/components/NavbarLogin.module.css'
+import Link from "next/link"
+import styles from "../styles/components/NavbarLogin.module.css"
 
-const Navbar = () => {
-    const router = useRouter()
-    return (
-        <nav className={`h-20 bg-white`}>
-            <div className={`d-flex justify-content-between mx-5 mt-3 mb-4`}>
-                <Image className={`pt-3`} src={require("../assets/icons/news-today-banner-loginpage.svg").default} alt="" />
-                <div className={`d-flex mx-5 pt-3`}>
-                    <div className={`mx-5 fw-bold`}>Home</div>
-                    <div className={`mx-5 text-muted`}>Articles</div>
-                    <div className={`mx-5 text-muted`}>Category</div>
-                    <div className={`mx-5 text-muted`}>About</div>
+const NavbarLogin = () => {
+    return (<>
+        <nav>
+            <div className={`d-flex justify-content-between mx-5 pt-3 pb-5`}>
+                <Image src={require("../assets/icons/news-today-banner-loginpage.svg").default} alt="" />
+                <div className={`d-flex pt-3`}>
+                    <div className={`mx-5`}><Link href={"/main/homepage"}>Home</Link></div>
+                    <div className={`mx-5`}><Link href={"/main/writearticle"}>Articles</Link></div>
+                    <div className={`mx-5`}><Link href={"#"}>Category</Link></div>
+                    <div className={`mx-5`}><Link href={"#"}>About</Link></div>
+                </div>
+                <div className={`search-section`}>
+                    <div className={`px-3 ${styles.borderSearch}`}>
+                        <Image src={require("../assets/icons/loop-search-navbar.svg").default} alt="" />
+                        <input
+                            placeholder="Search"
+                            className={`${styles.searchBox} my-3 ps-3`} />
+                    </div>
                 </div>
                 <div className={`d-flex pt-2`}>
                     <Image src={require("../assets/icons/notification-navbar.svg").default} alt="" />
@@ -21,7 +28,7 @@ const Navbar = () => {
             </div>
             <hr className={`${styles.divider}`} />
         </nav>
-    );
+    </>);
 }
 
-export default Navbar;
+export default NavbarLogin;
