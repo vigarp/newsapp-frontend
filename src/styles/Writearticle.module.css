@@ -22,12 +22,14 @@
 .btnChoosePhoto {
     background: #0D253C;
     border-radius: 16px;
+    cursor: pointer;
 }
 
 .btnRequestPublish {
     background: #376AED;
     box-shadow: 0px 0px 20px rgba(55, 106, 237, 0.6);
     border-radius: 16px;
+    cursor: pointer;
 }
 
 .btnSubmitPicture {
