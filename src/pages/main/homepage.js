@@ -4,16 +4,30 @@ import NavbarLogin from "../../components/NavbarLogin"
 import Footer from "../../components/Footer"
 import styles from "../../styles/Homepage.module.css"
 import Image from "next/image"
+import Link from "next/link"
+import { useRouter } from "next/router"
 
-const homepage = () => {
-    function authCheck () {
+
+export async function getServerSideProps() {
+    // Fetch data from external API
+    const res = await fetch(`${process.env.NEXT_PUBLIC_APP_URL_BACKEND}/articles`)
+    const data = await res.json()
+
+    // Pass data to the page via props
+    return { props: { data } }
+}
+
+const Homepage = ({ data }) => {
+    function authCheck() {
         if (typeof window !== "undefined" && localStorage.getItem('token') !== null) {
-            return {isLoggedIn: true}
+            return { isLoggedIn: true }
         } else {
-            return {isLoggedIn: false}
+            return { isLoggedIn: false }
         }
     }
-    const {isLoggedIn} = authCheck()
+    const { isLoggedIn } = authCheck()
+
+    const router = useRouter()
     return (<>
         <Head>
             <title>Homepage - NewsApp</title>
@@ -191,86 +205,28 @@ const homepage = () => {
                     <div className={`fw-bold`}>Latest News</div>
                 </div>
                 <div className={`news-rows row row justify-content-center`}>
-                    <div className={`col-4 d-flex m-3 my-5 w-25 ${styles.recommendedCardBackground}`}>
-                        <Image src={require("../../assets/goverment-cat-homepage.png")} width={126} height={202} alt="" />
-                        <div className={`mx-3 my-3 recommended-card-description`}>
-                            <div className={`text-primary fw-bold`}>President Election</div>
-                            <div>Why corona never ends? Let&apos;s see how its facts</div>
-                            <div className={`mt-1 d-flex justify-content-between recommended-card-info`}>
-                                <div className={`d-flex like-info`}>
-                                    <Image src={require("../../assets/icons/likes-homepage.svg").default} alt="" />
-                                    <div className={`mx-1 text-muted`}>2.1k</div>
-                                </div>
-                                <div className={`d-flex time-info`}>
-                                    <Image src={require("../../assets/icons/clock-homepage.svg").default} alt="" />
-                                    <div className={`mx-1 text-muted`}>3m ago</div>
-                                </div>
-                                <div className={`d-flex save-info`}>
-                                    <Image src={require("../../assets/icons/saved-homepage.svg").default} alt="" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={`col-4 d-flex m-3 my-5 w-25 ${styles.recommendedCardBackground}`}>
-                        <Image src={require("../../assets/goverment-cat-homepage.png")} width={126} height={202} alt="" />
-                        <div className={`mx-3 my-3 recommended-card-description`}>
-                            <div className={`text-primary fw-bold`}>President Election</div>
-                            <div>Why corona never ends? Let&apos;s see how its facts</div>
-                            <div className={`mt-1 d-flex justify-content-between recommended-card-info`}>
-                                <div className={`d-flex like-info`}>
-                                    <Image src={require("../../assets/icons/likes-homepage.svg").default} alt="" />
-                                    <div className={`mx-1 text-muted`}>2.1k</div>
-                                </div>
-                                <div className={`d-flex time-info`}>
-                                    <Image src={require("../../assets/icons/clock-homepage.svg").default} alt="" />
-                                    <div className={`mx-1 text-muted`}>3m ago</div>
-                                </div>
-                                <div className={`d-flex save-info`}>
-                                    <Image src={require("../../assets/icons/saved-homepage.svg").default} alt="" />
+                    {data.data?.map((item, index) => (
+                        <div className={`col-4 d-flex m-3 my-5 w-25 ${styles.recommendedCardBackground}`} key={index}>
+                            <Image src={item.attachment} width={126} height={202} alt="" />
+                            <div onClick={() => router.push(`/main/${item.id}`)} className={`mx-3 my-3 recommended-card-description`}>
+                                <div className={`text-primary fw-bold`}>{item.title}</div>
+                                <div>{item.header}</div>
+                                <div className={`mt-1 d-flex justify-content-between recommended-card-info`}>
+                                    <div className={`d-flex like-info`}>
+                                        <Image src={require("../../assets/icons/likes-homepage.svg").default} alt="" />
+                                        <div className={`mx-1 text-muted`}>2.1k</div>
+                                    </div>
+                                    <div className={`d-flex time-info`}>
+                                        <Image src={require("../../assets/icons/clock-homepage.svg").default} alt="" />
+                                        <div className={`mx-1 text-muted`}>3m ago</div>
+                                    </div>
+                                    <div className={`d-flex save-info`}>
+                                        <Image src={require("../../assets/icons/saved-homepage.svg").default} alt="" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div className={`col-4 d-flex m-3 my-5 w-25 ${styles.recommendedCardBackground}`}>
-                        <Image src={require("../../assets/goverment-cat-homepage.png")} width={126} height={202} alt="" />
-                        <div className={`mx-3 my-3 recommended-card-description`}>
-                            <div className={`text-primary fw-bold`}>President Election</div>
-                            <div>Why corona never ends? Let&apos;s see how its facts</div>
-                            <div className={`mt-1 d-flex justify-content-between recommended-card-info`}>
-                                <div className={`d-flex like-info`}>
-                                    <Image src={require("../../assets/icons/likes-homepage.svg").default} alt="" />
-                                    <div className={`mx-1 text-muted`}>2.1k</div>
-                                </div>
-                                <div className={`d-flex time-info`}>
-                                    <Image src={require("../../assets/icons/clock-homepage.svg").default} alt="" />
-                                    <div className={`mx-1 text-muted`}>3m ago</div>
-                                </div>
-                                <div className={`d-flex save-info`}>
-                                    <Image src={require("../../assets/icons/saved-homepage.svg").default} alt="" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className={`col-4 d-flex m-3 w-25 ${styles.recommendedCardBackground}`}>
-                        <Image src={require("../../assets/goverment-cat-homepage.png")} width={126} height={202} alt="" />
-                        <div className={`mx-3 my-3 recommended-card-description`}>
-                            <div className={`text-primary fw-bold`}>President Election</div>
-                            <div>Why corona never ends? Let&apos;s see how its facts</div>
-                            <div className={`mt-1 d-flex justify-content-between recommended-card-info`}>
-                                <div className={`d-flex like-info`}>
-                                    <Image src={require("../../assets/icons/likes-homepage.svg").default} alt="" />
-                                    <div className={`mx-1 text-muted`}>2.1k</div>
-                                </div>
-                                <div className={`d-flex time-info`}>
-                                    <Image src={require("../../assets/icons/clock-homepage.svg").default} alt="" />
-                                    <div className={`mx-1 text-muted`}>3m ago</div>
-                                </div>
-                                <div className={`d-flex save-info`}>
-                                    <Image src={require("../../assets/icons/saved-homepage.svg").default} alt="" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    ))}
                 </div>
                 <div className={`end-articles`}>
                     <div className={`text-center text-muted mt-5 mb-3`}>No article left</div>
@@ -281,4 +237,4 @@ const homepage = () => {
     </>);
 }
 
-export default homepage;
+export default Homepage;
