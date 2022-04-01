@@ -1,0 +1,38 @@
+.profileCard {
+    background: rgba(82, 130, 255, 0.06);
+    box-shadow: 0px 10px 15px rgba(82, 130, 255, 0.06);
+    border-radius: 16px;
+}
+
+.boxStatsPanel {
+    background: #386BED;
+    border-radius: 12px;
+}
+
+.userPointer {
+    cursor: pointer;
+}
+
+.dividerVertical {
+    border: 1px solid rgba(55, 106, 237, 0.3);
+    transform: rotate(-180deg);
+}
+
+.btnRequestAuthor {
+    background: #376AED;
+    box-shadow: 0px 0px 20px rgba(55, 106, 237, 0.6);
+    border-radius: 16px;
+    cursor: pointer;
+}
+
+.borderForm {
+    opacity: 0.3;
+    border: 1px solid #376AED;
+    box-sizing: border-box;
+    border-radius: 10px;
+}
+
+.formBox {
+    outline: 0;
+    border: 0;
+}
