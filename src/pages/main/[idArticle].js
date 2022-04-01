@@ -1,24 +1,18 @@
-import { useRouter } from "next/router"
+// import internal modules
 import Head from "next/head"
 import Image from "next/image"
+import { useRouter } from "next/router"
+
+// import external modules
 import Navbar from "../../components/Navbar"
 import Footer from "../../components/Footer"
 import styles from "../../styles/Articleview.module.css"
 import NavbarLogin from "../../components/NavbarLogin"
-import { useEffect } from "react"
-
-export async function getServerSideProps(context) {
-    const {idArticle} = context.query
-    // Fetch data from external API
-    const res = await fetch(`${process.env.NEXT_PUBLIC_APP_URL_BACKEND}/articles/${idArticle}`)
-    const data = await res.json()
-
-    // Pass data to the page via props
-    return { props: { data } }
-}
 
 const Articleview = ({data}) => {
     const router = useRouter()
+
+    // Authentication Block
     function authCheck() {
         if (typeof window !== "undefined" && localStorage.getItem('token') !== null) {
             return { isLoggedIn: true }
@@ -68,6 +62,16 @@ const Articleview = ({data}) => {
         </section>
         <Footer />
     </>);
+}
+
+export async function getServerSideProps(context) {
+    const {idArticle} = context.query
+    // Fetch data from external API
+    const res = await fetch(`${process.env.NEXT_PUBLIC_APP_URL_BACKEND}/articles/${idArticle}`)
+    const data = await res.json()
+
+    // Pass data to the page via props
+    return { props: { data } }
 }
 
 export default Articleview;
