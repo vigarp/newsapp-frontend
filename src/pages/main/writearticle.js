@@ -27,23 +27,42 @@ const Writearticle = () => {
         }
     })
     const [showModal, setShowModal] = useState(false);
-    const [getFormPic, setGetFormPic] = useState({});
+    // const [getFormPic, setGetFormPic] = useState({});
 
-    const [showPicData, setShowPicData] = useState();
+    // const [showPicData, setShowPicData] = useState();
 
-    const [formDataPicTemp, setFormDataPicTemp] = useState({
+    // const [formDataPicTemp, setFormDataPicTemp] = useState({
+    //     picture: ""
+    // })
+    // const formDataPic = new URLSearchParams()
+    // formDataPic.append("picture", formDataPicTemp.picture[0])
+
+    const [picTempData, setPicTempData] = useState({
         picture: ""
     })
-    const formDataPic = new URLSearchParams()
-    formDataPic.append("picture", formDataPicTemp.picture[0])
 
+    const [picShow, setPicShow] = useState({
+        picture: ''
+    })
     const [formArticle, setFormArticle] = useState({
-        picture: '',
         title: '',
         category: '',
         type: ''
     })
 
+    const handleChangePic = (e) => {
+        setPicTempData({
+            ...picTempData,
+            [e.target.name]: e.target.value
+        })
+    }
+
+    const handleSubmitPic = () => {
+        setPicShow({
+            picture: picTempData.picture
+        })
+        openModal(false)
+    }
     const handleChangeForm = (e) => {
         setFormArticle({
             ...formArticle,
@@ -62,7 +81,7 @@ const Writearticle = () => {
                     title: formArticle.title,
                     category: formArticle.category,
                     body: formArticle.type,
-                    attachment: formArticle.picture
+                    attachment: picTempData.picture
                 })
                 .then((res) => {
                     const postMessage = res.data.message
@@ -103,8 +122,8 @@ const Writearticle = () => {
             <div className={`m-5 d-flex h-100`}>
                 <div className={`w-25`}>
                     <div className={`p-3 ${styles.boxCoverPhoto}`}>
-                        {formArticle.picture ? (
-                            <Image src={formArticle.picture} height={200} width={200} alt="" />
+                        {picShow.picture ? (
+                            <Image src={picShow?.picture} height={200} width={200} alt="" />
                         ) : (
                             <div className={`text-center p-5 ${styles.innerBorderPhoto}`}>+</div>
                         )}
@@ -155,9 +174,9 @@ const Writearticle = () => {
                         type="text"
                         name="picture"
                         placeholder="Article Picture"
-                        onChange={handleChangeForm}
-                        value={formArticle.picture} />
-                    <div className={`w-50 px-5 py-3 text-center my-3 text-white ${styles.btnSubmitPicture}`} onClick={() => openModal(false)} >Submit Picture</div>
+                        onChange={handleChangePic}
+                        value={picTempData.picture} />
+                    <div className={`w-50 px-5 py-3 text-center my-3 text-white ${styles.btnSubmitPicture}`} onClick={handleSubmitPic} >Submit Picture</div>
                 </div>
             </div>
         ) : ('')}
